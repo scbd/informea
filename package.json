@@ -1,0 +1,10 @@
+{
+  "name": "informea",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "^4.8.6",
+    "odata-server": "^1.3.6",
+    "superagent": "^0.18.2",
+    "underscore": "^1.7.0"
+  }
+}
