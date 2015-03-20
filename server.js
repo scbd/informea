@@ -1,14 +1,11 @@
-var express = require('express');
-var app = express();
+require('odata-server');
 
-// SET ROUTES
+console.log('Starting OData server.');
 
-app.use('/informea', require('./controller'));
+$data.createODataServer({
+    type: require('./context.js'),
+}, '/informea.svc', 5000, 'localhost');
 
-// START SERVER
-
-var server = app.listen(5000, function() {
-    console.log('Listening on port %d', server.address().port);
-});
+console.log('OData server listening on http://localhost:5000/informea.svc');
 
 // NO EXPORTS - MAIN FILE
