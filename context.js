@@ -126,13 +126,13 @@ $data.Entity.extend('CountryReport', {
 
 $data.Entity.extend('CountryProfile', {
     protocolVersion:        { type: $data.Int16,                            required: true  },  //
-    updated:                { type: Date,                                   required: false },  // This record will be used by the synchronization process, to retrieve only the newest records from the database. It is not mandatory, but if not provided, the service will always harvest all records. If this information is not available, always return the current date
     country:                { type: String,                                 required: true  },  // Country code. ISO 31661  3letter code for the country (http://en.wikipedia.org/wiki/ISO_3166 1_alpha3) or ISO 31661  2letter country code (http://en.wikipedia.org/wiki/ISO_3166 1_alpha2)
     treaty:                 { type: String,                                 required: true  },  // This is the information source, not the subject of signature or ratification. Use one of the predefined values from the Treaty enumeration.
-    legalInstrumentName:    { type: String,                                 required: true  },  // Name of the legal instrument (for instance “Basel Protocol on Liability and Compensation for Damage Resulting from Transboundary Movements of Hazardous Wastes and their Disposal”)
-    legalInstrumentType:    { type: String,                                 required: true  },  // Type of instrument (for instance: Protocol, Amendment, Convention etc.) Use a predefined value from the legal instrument type enumeration.
-    parentLegalInstrument:  { type: Treaty,                                 required: true  },  // Indicate to which legal instrument this one depends on. For instance, if the legal instrument is “Ban Amendment to the Basel Convention” then the parent legal instrument must be “basel” as this instrument is an amendment of the Basel Convention. If this endorsement is the main Convention text (for instance “Basel Convention”), then this field (“basel”) will ease the display of legal instruments by MEA. Use a predefined value from the Treaty enumeration.
-    endorsementDetails:     { type: Array, elementType: EndorsementDetails, required: true  }   // Specify details related to this legal instrument endorsement such as date, type of endorsement etc. See EndorsementDetails complex type specifications for more details.
+    entryIntoForce:         { type: Date,                                   required: true  },  // Date when the treaty/convention entered into force within this country.
+    updated:                { type: Date,                                   required: false },  // This record will be used by the synchronization process, to retrieve only the newest records from the database. It is not mandatory, but if not provided, the service will always harvest all records. If this information is not available, always return the current date
+    entryIntoForceStatus:   { type: String,                                 required: false },  // Current ratification status for this country. Its value is taken from a list of pre­defined values.
+    statusDate:             { type: Date,                                   required: false },  // Date when the “status” value was achieved. Can be null.
+    note:                   { type: String,                                 required: false }   // An additional note that accompanies the ratifications status. Providers may put here an observation, for example why the treaty was ratified, but did not entered into force.
 });
 
 $data.Entity.extend('Site', {
