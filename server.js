@@ -1,9 +1,14 @@
 require('odata-server');
+require('./custom/customCompiler');
+require('./custom/customConverter');
+require('./custom/customFunctionCompiler');
+require('./custom/customProvider');
 
 console.log('Starting OData server.');
 
 $data.createODataServer({
     type: require('./context.js'),
+    provider: { name: 'Custom' },
     checkPermission: function(access, user, entitySets, callback) {
         
         if(access & $data.Access.Read) callback.success();
