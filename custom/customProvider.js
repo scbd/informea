@@ -122,30 +122,6 @@ $C('$data.storageProviders.Custom.CustomProvider', $data.StorageProviderBase, nu
             
             result = result.concat(results);
         
-        // var url = "https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,government_s,createdDate_dt,updatedDate_dt,url_ss,reportType_s&q=NOT+version_s:*+AND+realm_ss:chm+AND+schema_s:*+AND+(+schema_s:nationalReport+)+AND+(+reportType_s:B0EBAE91-9581-4BB2-9C02-52FCF9D82721+)&rows=99999&start=0&wt=json"
-        // 
-        // request.get(url).end(function(res) {
-        // 
-        //     if(res.body.response) {
-        //         
-        //         res.body.response.docs.forEach(function (document) {
-        //             
-        //             var country = _.findWhere(countryCodes, { 'alpha-2': document.government_s.toUpperCase() });
-        //             
-        //             result.push(new NationalPlan({
-        //                 protocolVersion: 1,
-        //                 id: document.id,
-        //                 treaty: 'cbd',
-        //                 country: country['alpha-3'],
-        //                 type: 'nbsap',
-        //                 title: [{ language: 'en', value: document.title_t }],
-        //                 url: document.url_ss[0],
-        //                 submission: document.createdDate_dt,
-        //                 updated: document.updatedDate_dt
-        //             }));
-        //         });
-        //     }
-            
             //// /INTEGRATION POINT
             
             if (sql.$filter && !sql.$every)
