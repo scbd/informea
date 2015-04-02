@@ -118,6 +118,7 @@ $C('$data.storageProviders.Custom.CustomProvider', $data.StorageProviderBase, nu
         if(sourceName=='NationalPlans')   mapper = require('../mappers/national-plan');
         if(sourceName=='Meetings')        mapper = require('../mappers/meeting');
         if(sourceName=='Contacts')        mapper = require('../mappers/contact');
+        if(sourceName=='CountryReports')  mapper = require('../mappers/country-report');
 
         mapper.query().then(function (results) {
             
