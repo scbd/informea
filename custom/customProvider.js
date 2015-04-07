@@ -114,11 +114,12 @@ $C('$data.storageProviders.Custom.CustomProvider', $data.StorageProviderBase, nu
         //// INTEGRATION POINT
         
         var mapper;
+        if(sourceName=='Contacts')        mapper = require('../mappers/contact');
         if(sourceName=='CountryProfiles') mapper = require('../mappers/country-profile');
+        if(sourceName=='CountryReports')  mapper = require('../mappers/country-report');
+        if(sourceName=='Decisions')       mapper = require('../mappers/decision');
         if(sourceName=='NationalPlans')   mapper = require('../mappers/national-plan');
         if(sourceName=='Meetings')        mapper = require('../mappers/meeting');
-        if(sourceName=='Contacts')        mapper = require('../mappers/contact');
-        if(sourceName=='CountryReports')  mapper = require('../mappers/country-report');
 
         mapper.query().then(function (results) {
             
