@@ -14,8 +14,8 @@ $data.createODataServer({
         if(access & $data.Access.Read) callback.success();
         else                           callback.error('auth fail');
     }
-}, '/informea.svc', 5000, 'localhost');
+}, '/informea.svc', 8000);
 
-console.log('OData server listening on http://localhost:5000/informea.svc');
+console.log('OData server listening on http://0.0.0.0:8000/informea.svc');
 
 // NO EXPORTS - MAIN FILE
