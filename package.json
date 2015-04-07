@@ -8,5 +8,6 @@
     "superagent-promises": "git+https://github.com/scbd/superagent-promises.git",
     "underscore": "^1.7.0",
     "when": "^3.7.2"
-  }
+  },
+  "main": "server.js"
 }
