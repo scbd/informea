@@ -9,7 +9,7 @@ class ContactMapper {
     //============================================================
     async query () {
 
-    	var url = 'https://chm.cbd.int/api/v2013/index/select?fl=id,ctgList_ss,government_s,title_t,function_t,organization_t,department_t,email_ss,telephone_s,fax_ss,updatedDate_dt&q=schema_s:focalPoint+AND+(ctgList_ss:CBD-FP1+OR+ctgList_ss:CBD-FP2+OR+ctgList_ss:BCH-FP)&rows=10&start=0&wt=json';
+    	var url = 'https://chm.cbd.int/api/v2013/index/select?fl=id,ctgList_ss,government_s,title_t,function_t,organization_t,department_t,email_ss,telephone_s,fax_ss,updatedDate_dt&q=schema_s:focalPoint+AND+(ctgList_ss:CBD-FP1+OR+ctgList_ss:CBD-FP2+OR+ctgList_ss:CPB-FP1+OR+ctgList_ss:ABS-FP)&rows=10&start=0&wt=json';
 
     	var res = await superagent.get(url).use(superagentQ).end();
 
@@ -20,7 +20,8 @@ class ContactMapper {
 
             if(document.ctgList_ss.indexOf('CBD-FP1')>=0) treaties.push('cbd');
             if(document.ctgList_ss.indexOf('CBD-FP2')>=0) treaties.push('cbd'); primary = 0;
-            if(document.ctgList_ss.indexOf('BCH-FP' )>=0) treaties.push('cartagena');
+            if(document.ctgList_ss.indexOf('CPB-FP1')>=0) treaties.push('cartagena');
+            if(document.ctgList_ss.indexOf('ABS-FP' )>=0) treaties.push('nagoya');
             
             return new Contact({
             
