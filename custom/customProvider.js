@@ -173,7 +173,8 @@ $C('$data.storageProviders.Custom.CustomProvider', $data.StorageProviderBase, nu
             query.rawDataList = result;
             
             callBack.success(query);
-        });
+            
+        }).catch(error => callBack.error(error));         
     },
     _compile: function (query, params) {
         var compiler = new $data.storageProviders.Custom.CustomCompiler(this);
