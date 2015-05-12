@@ -10,5 +10,7 @@
     "underscore": "^1.7.0",
     "when": "^3.7.2"
   },
-  "main": "bootstrap.js"
+  "scripts": {
+      "start": "node bootstrap.js"
+  }
 }
