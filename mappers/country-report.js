@@ -16,7 +16,7 @@ class CountryReportMapper {
             protocolVersion:    1,
             id:                 document.id,
             treaty:             'cbd',
-            country:            document.government_s,
+            country:            document.government_s.toUpperCase(),
             title:              [ { language: 'en', value: document.title_t } ],
             submission:         document.createdDate_dt,
         //  url:                document....,

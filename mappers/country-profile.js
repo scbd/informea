@@ -14,7 +14,7 @@ class CountryProfileMapper {
     	return res.body.map(countryProfile => new CountryProfile({
         
             protocolVersion:        2,
-            country:                countryProfile.code,
+            country:                countryProfile.code.toUpperCase(),
             treaty:                 'cbd',
             entryIntoForce:         countryProfile.treaties.XXVII8.party,
         //  updated:                
