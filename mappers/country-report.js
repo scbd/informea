@@ -9,7 +9,7 @@ class CountryReportMapper {
     //============================================================
     async query () {
         
-    	var res = await superagent.get('https://chm.cbd.int/api/v2013/index/select?fl=id,government_s,title_t,createdDate_dt,url_ss,updatedOn_dt&q=realm_ss:chm+AND+schema_s:nationalReport&rows=25&sort=createdDate_dt+desc,+title_t+asc&start=0&wt=json').use(superagentQ).end();
+    	var res = await superagent.get('https://chm.cbd.int/api/v2013/index/select?fl=id,government_s,title_t,createdDate_dt,url_ss,updatedOn_dt&q=realm_ss:chm+AND+schema_s:nationalReport&rows=9999&sort=createdDate_dt+desc,+title_t+asc&start=0&wt=json').use(superagentQ).end();
 
         return res.body.response.docs.map(document => new CountryReport({
                     
