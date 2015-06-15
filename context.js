@@ -155,7 +155,7 @@ $data.Entity.extend('NationalPlan', {
     type:                   { type: String,                                 required: true  }, // Type of plan. Use one of the predefined values from NationalPlanType enumeration
     title:                  { type: Array, elementType: LocalizableString,  required: true  }, // Title of the plan. This is a list of Localizable String complex type objects. This must not be empty, producers are required to provide at least English version of the title
     url:                    { type: String,                                 required: false }, // URL where the site information is presented online
-    files:                  { type: File,                                   required: false }, // Report files. This is a list of File complex type, described below.
+    files:                  { type: Array, elementType: File,               required: false }, // Report files. This is a list of File complex type, described below.
     submission:             { type: Date,                                   required: false }, // Date when document was submitted
     updated:                { type: Date,                                   required: false }  // This record will be used by the synchronization process, to retrieve only the newest records from the database. It is not mandatory, but if not provided, the service will always harvest all records. If this information is not available, always return the current date.
 });
