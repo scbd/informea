@@ -1,3 +1,5 @@
+[![Dependency Status](https://david-dm.org/scbd/informea.svg)](https://david-dm.org/scbd/informea) 
+
 ## Quick Start
 
 The quickest way to get started if to clone and run the application as shown below:
