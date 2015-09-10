@@ -15,5 +15,4 @@ test:
     - curl --retry 10 --retry-delay 5 -v http://localhost:8000/informea.svc/Contacts
     - curl --retry 10 --retry-delay 5 -v http://localhost:8000/informea.svc/CountryReports
     - curl --retry 10 --retry-delay 5 -v http://localhost:8000/informea.svc/CountryProfiles
-    - curl --retry 10 --retry-delay 5 -v http://localhost:8000/informea.svc/Sites
     - curl --retry 10 --retry-delay 5 -v http://localhost:8000/informea.svc/NationalPlans
