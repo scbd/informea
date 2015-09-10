@@ -1,7 +1,7 @@
 var superagent = require('superagent-promise')(require('superagent'), Promise);
 
 class ContactMapper {
-    
+
     //============================================================
     //
     //
@@ -21,9 +21,9 @@ class ContactMapper {
             if(document.ctgList_ss.indexOf('CBD-FP2')>=0) treaties.push('cbd'); primary = 0;
             if(document.ctgList_ss.indexOf('CPB-FP1')>=0) treaties.push('cartagena');
             if(document.ctgList_ss.indexOf('ABS-FP' )>=0) treaties.push('nagoya');
-            
+
             return new Contact({
-            
+
                 protocolVersion:    1,
                 id:                 document.id,
                 treaties:           treaties,

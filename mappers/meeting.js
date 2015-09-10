@@ -1,19 +1,19 @@
 var superagent = require('superagent-promise')(require('superagent'), Promise);
 
 class MeetingMapper {
- 
+
     //============================================================
     //
     //
     //============================================================
     async query () {
-        
+
     	var url = 'https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,updatedDate_dt,url_ss&q=NOT+version_s:*+AND+realm_ss:chm+AND+schema_s:meeting&rows=9999&start=0&wt=json';
 
     	var res = await superagent.get(url).end();
 
 		return res.body.response.docs.map(document => new Meeting({
-            
+
             protocolVersion:        1,
             id:                     document.id,
             treaty:                 'cbd',
@@ -35,7 +35,7 @@ class MeetingMapper {
         //  latitude:               { type: Number,                                 required: false },   // Latitude of the event place in decimal degrees (ex. 23.456323). This value may be used to represent the event on a map using existing geographical applications such as Google Maps
         //  longitude:              { type: Number,                                 required: false },   // Longitude of the event place in decimal degrees (ex. 23.456323). This value may be used to represent the event on a map using existing geographical applications such as Google Maps
             updated:                document.updatedDate_dt
-		
+
         }));
     }
 }

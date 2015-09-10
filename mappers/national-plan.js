@@ -7,7 +7,7 @@ class NationalPlanMapper {
     //
     //============================================================
     async query () {
-        
+
     	var url = "https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,government_s,createdDate_dt,updatedDate_dt,url_ss,reportType_s,documentLinks_s&q=NOT+version_s:*+AND+realm_ss:chm+AND+schema_s:*+AND+(+schema_s:nationalReport+)+AND+(+reportType_s:B0EBAE91-9581-4BB2-9C02-52FCF9D82721+)&rows=9999&start=0&wt=json"
 
     	var res = await superagent.get(url).end();
@@ -26,7 +26,7 @@ class NationalPlanMapper {
             })),
 			submission: document.createdDate_dt,
 			updated: document.updatedDate_dt
-		
+
         }));
 	}
 }
