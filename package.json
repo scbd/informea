@@ -1,6 +1,6 @@
 {
   "name": "informea",
-  "version": "0.0.1",
+  "description": "SCBD InforMEA Service",
   "dependencies": {
     "babel": "5.8.23",
     "express": "4.13.3",
@@ -10,6 +10,10 @@
     "underscore": "1.8.3",
     "when": "3.7.3"
   },
+  "engine": "node >= 0.12.40",
+  "license": "MIT",
+  "private": true,
+  "repository": "scbd/informea",
   "scripts": {
       "start": "node bootstrap.js"
   }
