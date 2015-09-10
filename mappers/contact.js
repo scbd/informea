@@ -1,5 +1,4 @@
-var superagent  = require('superagent');
-var superagentQ = require('superagent-promises');
+var superagent = require('superagent-promise')(require('superagent'), Promise);
 
 class ContactMapper {
     
@@ -11,7 +10,7 @@ class ContactMapper {
 
     	var url = 'https://chm.cbd.int/api/v2013/index/select?fl=id,ctgList_ss,government_s,title_t,function_t,organization_t,department_t,email_ss,telephone_s,fax_ss,updatedDate_dt&q=schema_s:focalPoint+AND+(ctgList_ss:CBD-FP1+OR+ctgList_ss:CBD-FP2+OR+ctgList_ss:CPB-FP1+OR+ctgList_ss:ABS-FP)&rows=9999&start=0&wt=json';
 
-    	var res = await superagent.get(url).use(superagentQ).end();
+    	var res = await superagent.get(url).end();
 
 		return res.body.response.docs.map(document => {
 

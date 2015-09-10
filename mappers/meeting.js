@@ -1,5 +1,4 @@
-var superagent  = require('superagent');
-var superagentQ = require('superagent-promises');
+var superagent = require('superagent-promise')(require('superagent'), Promise);
 
 class MeetingMapper {
  
@@ -11,7 +10,7 @@ class MeetingMapper {
         
     	var url = 'https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,updatedDate_dt,url_ss&q=NOT+version_s:*+AND+realm_ss:chm+AND+schema_s:meeting&rows=9999&start=0&wt=json';
 
-    	var res = await superagent.get(url).use(superagentQ).end();
+    	var res = await superagent.get(url).end();
 
 		return res.body.response.docs.map(document => new Meeting({
             

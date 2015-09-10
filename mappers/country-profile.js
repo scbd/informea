@@ -1,5 +1,4 @@
-var superagent  = require('superagent');
-var superagentQ = require('superagent-promises');
+var superagent = require('superagent-promise')(require('superagent'), Promise);
 
 class CountryProfileMapper {
  
@@ -9,7 +8,7 @@ class CountryProfileMapper {
     //============================================================
     async query () {
         
-    	var res = await superagent.get('https://chm.cbd.int/api/v2013/countries').use(superagentQ).end();
+    	var res = await superagent.get('https://chm.cbd.int/api/v2013/countries').end();
 
     	return res.body.map(countryProfile => new CountryProfile({
         
