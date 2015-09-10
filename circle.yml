@@ -1,0 +1,19 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker info
+    - docker build -t informea .
+
+test:
+  override:
+    - docker run -d -p 8000:8000 informea; sleep 10
+    - curl --retry 10 --retry-delay 5 -v http://localhost:8000/informea.svc/Decisions
+    - curl --retry 10 --retry-delay 5 -v http://localhost:8000/informea.svc/Meetings
+    - curl --retry 10 --retry-delay 5 -v http://localhost:8000/informea.svc/Contacts
+    - curl --retry 10 --retry-delay 5 -v http://localhost:8000/informea.svc/CountryReports
+    - curl --retry 10 --retry-delay 5 -v http://localhost:8000/informea.svc/CountryProfiles
+    - curl --retry 10 --retry-delay 5 -v http://localhost:8000/informea.svc/Sites
+    - curl --retry 10 --retry-delay 5 -v http://localhost:8000/informea.svc/NationalPlans
