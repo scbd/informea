@@ -1,4 +1,4 @@
-[![Dependency Status](https://david-dm.org/scbd/informea.svg)](https://david-dm.org/scbd/informea) 
+[![Dependency Status](https://david-dm.org/scbd/informea.svg)](https://david-dm.org/scbd/informea) [![Circle CI](https://circleci.com/gh/scbd/informea/tree/master.svg?style=shield)](https://circleci.com/gh/scbd/informea/tree/master)
 
 ## Quick Start
 
