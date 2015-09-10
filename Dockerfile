@@ -1,2 +1,13 @@
-FROM node:0.10-onbuild
+FROM node:0.12
+
+WORKDIR /usr/src/app
+
+COPY package.json ./
+
+RUN npm install
+
+COPY . ./
+
 EXPOSE 8000
+
+CMD [ "npm", "start" ]
