@@ -65,6 +65,7 @@ $data.Entity.extend('Decision', {
     meetingUrl:             { type: String,                                 required: false },   // URL of the meeting where the decision was taken. This may point to the MEA website where this meeting is described.
     content:                { type: Array, elementType: LocalizableString,  required: false },   // Content of the decision. This is a list of LocalizableString type objects. Conventions can store their decision in binary format such as PDF/Word, but also in database fields (text, blob). If the decision text is stored in a database, use this property to expose it. Deprecated since version 1.5.6  use ‘files’ property instead
     keywords:               { type: Array, elementType: LocalizableString,  required: false },   // The list of terms that are used to tag this decision. This is a list of Vocabulary Term complex type objects. The MEAs should keep a mapping between their local vocabulary terms and the InforMEA vocabulary terms.
+    displayOrder:           { type: $data.Int32,                            required: false },   //
     files:                  { type: Array, elementType: File,               required: false }    // Decision document files. This is a list of File entities. Conventions can store their decision in binary format such as PDF/Word, but also in database fields (text, blob). If the decision text is stored in a database, use this property to expose it.});
 });
 

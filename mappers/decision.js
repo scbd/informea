@@ -8,7 +8,7 @@ class DecisionMapper {
     //============================================================
     async query () {
 
-    	var res = await superagent.get('https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,code_s,createdDate_dt,updatedDate_dt&q=realm_ss:chm+AND+schema_s:decision&rows=9999&sort=createdDate_dt+desc,+title_t+asc&start=0&wt=json').end();
+    	var res = await superagent.get('https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,code_s,createdDate_dt,updatedDate_dt,position_i&q=realm_ss:chm+AND+schema_s:decision&rows=9999&sort=createdDate_dt+desc,+title_t+asc&start=0&wt=json').end();
 
         return res.body.response.docs.map(document => new Decision({
 
@@ -23,12 +23,13 @@ class DecisionMapper {
             number:                 document.code_s,
             treaty:                 'cbd',
             published:              document.createdDate_dt,
-            updated:                document.updatedDate_dt
+            updated:                document.updatedDate_dt,
         //  meetingId:
         //  meetingTitle:
         //  meetingUrl:
         //  content:
         //  keywords:
+            displayOrder:           document.position_i
         //  files:
         }));
     }
