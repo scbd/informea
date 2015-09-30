@@ -15,6 +15,6 @@ Install dependencies
 
 Now you can launch the project directly.
 
-    node server
+    npm start
 
-You'll then be able to access the service locally at `http://localhost:5000/`.
+You'll then be able to access the service locally at `http://localhost:8000/informea.svc`.
