@@ -20,8 +20,9 @@ class CountryReportMapper {
             submission:         document.createdDate_dt,
             url:                document.url_ss[0],
             files:              JSON.parse(document.documentLinks_s||'[]').map(link => new File({
-                filename: link.name,
-                url: link.url
+                filename: link.url.substr(link.url.lastIndexOf("/")+1),
+                url: link.url,
+                language: link.url.substring(link.url.length-6, link.url.length-4)
             })),
             updated:            document.updatedOn_dt
         }));

@@ -1,3 +1,5 @@
+
+"use strict";
 var superagent = require('superagent-promise')(require('superagent'), Promise);
 
 class NationalPlanMapper {
@@ -21,8 +23,9 @@ class NationalPlanMapper {
 			title: [{ language: 'en', value: document.title_t }],
 			url: document.url_ss[0],
             files: JSON.parse(document.documentLinks_s||'[]').map(link => new File({
-                filename: link.name,
-                url: link.url
+                filename: link.url.substr(link.url.lastIndexOf("/")+1),
+                url: link.url,
+                language: link.url.substring(link.url.length-6, link.url.length-4)
             })),
 			submission: document.createdDate_dt,
 			updated: document.updatedDate_dt
