@@ -8,7 +8,7 @@ class MeetingMapper {
     //============================================================
     async query () {
 
-    	var url = 'https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,updatedDate_dt,url_ss&q=NOT+version_s:*+AND+realm_ss:chm+AND+schema_s:meeting&rows=9999&start=0&wt=json';
+    	var url = 'https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,title_AR_t,title_ES_t,title_FR_t,title_RU_t,title_ZH_t,eventCountry_s,startDate_dt,updatedDate_dt,url_ss&q=NOT+version_s:*+AND+realm_ss:chm+AND+schema_s:meeting&rows=9999&start=0&wt=json';
 
     	var res = await superagent.get(url).end();
 
@@ -18,7 +18,7 @@ class MeetingMapper {
             id:                     document.id,
             treaty:                 'cbd',
             url:                    document.url_ss.length ? document.url_ss[0] : null,
-            title:                  [ { language: 'en', value: document.title_t } ],
+            title:                  [ { language: 'en', value: document.title_t },{ language: 'ar', value: document.title_AR_t},{ language: 'es', value: document.title_ES_t},{ language: 'fr', value: document.title_FR_t},{ language: 'ru', value: document.title_RU_t},{ language: 'zh', value: document.title_ZH_t} ],
         //  description:            { type: Array, elementType: LocalizableString,  required: false },   // Short description of the meeting. This is a list of Localizable String complex type objects.
             start:                  document.startDate_dt,
         //  end:                    { type: Date,                                   required: false },   // End date for the meeting
@@ -30,11 +30,11 @@ class MeetingMapper {
         //  imageUrl:               { type: String,                                 required: false },   // URL of a small, representative image for the meeting, displayed by InforMEA to display a listing of the meetings.
         //  imageCopyright:         { type: String,                                 required: false },   // Copyright statement of the above image
         //  location:               { type: String,                                 required: false },   // Location of the event (ex. Nottingham Castle, grand ball room)
-            city:                   document.eventCity_t,
+        //   city:                   document.eventCity_t,
             country:                (document.eventCountry_s||'').toUpperCase(),
         //  latitude:               { type: Number,                                 required: false },   // Latitude of the event place in decimal degrees (ex. 23.456323). This value may be used to represent the event on a map using existing geographical applications such as Google Maps
         //  longitude:              { type: Number,                                 required: false },   // Longitude of the event place in decimal degrees (ex. 23.456323). This value may be used to represent the event on a map using existing geographical applications such as Google Maps
-            updated:                document.updatedDate_dt
+        //    updated:                document.updatedDate_dt
 
         }));
     }

@@ -25,7 +25,7 @@ class NationalPlanMapper {
             files: JSON.parse(document.documentLinks_s||'[]').map(link => new File({
                 filename: link.url.substr(link.url.lastIndexOf("/")+1),
                 url: link.url,
-                language: link.url.substring(link.url.length-6, link.url.length-4)
+                language: en
             })),
 			submission: document.createdDate_dt,
 			updated: document.updatedDate_dt
