@@ -8,7 +8,7 @@ class MeetingMapper {
     //============================================================
     async query () {
 
-    	var url = 'https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,title_AR_t,title_ES_t,title_FR_t,title_RU_t,title_ZH_t,eventCountry_s,startDate_dt,updatedDate_dt,url_ss&q=NOT+version_s:*+AND+realm_ss:chm+AND+schema_s:meeting&rows=9999&start=0&wt=json';
+    	var url = 'https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,title_AR_t,title_ES_t,title_FR_t,title_RU_t,title_ZH_t,symbol_s,eventCountry_s,startDate_dt,updatedDate_dt,url_ss&q=NOT+version_s:*+AND+realm_ss:chm+AND+schema_s:meeting&rows=9999&start=0&wt=json';
 
     	var res = await superagent.get(url).end();
 
@@ -24,7 +24,7 @@ class MeetingMapper {
         //  end:                    { type: Date,                                   required: false },   // End date for the meeting
         //  repetition:             { type: String,                                 required: false },   // Frequency of this meeting. Use one of the predefined values from MeetingRepetition enumeration
         //  kind:                   { type: String,                                 required: false },   // Kind of meeting (official, partner, interest etc.). Use one of the predefined values from MeetingKind enumeration
-        //  type:                   { type: String,                                 required: false },   // Type of meeting. Use one of the predefined values from MeetingType enumeration
+            type:                   document.symbol_s.match(/^COP-\d+$/)?'COP': (document.symbol_s==='EXCOP-01')?'COP': '', //{ type: String,                                 required: false },   // Type of meeting. Use one of the predefined values from MeetingType enumeration
         //  access:                 { type: String,                                 required: false },   // Specifies if there is public access to the event. Use one of the predefined values from MeetingAccess enumeration
         //  status:                 { type: String,                                 required: false },   // Status of the event. Use one of the predefined values from MeetingStatus enumeration
         //  imageUrl:               { type: String,                                 required: false },   // URL of a small, representative image for the meeting, displayed by InforMEA to display a listing of the meetings.
