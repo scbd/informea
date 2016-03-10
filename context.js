@@ -46,7 +46,7 @@ $data.Entity.extend('Treaty', {
 });
 
 $data.Entity.extend('Roles', {
-    treaty:                 { type: String,             required: false },  // cbd//catagena//nagoya
+    treaty:                 { type: String,             required: false },  // cbd//cartagena//nagoya
     roles:                  { type: Array, elementType: String ,             required: false },  // focal point roles of the same person for a specific treaty
     order:                  { type: String,             required: false },  // use to list the focal points in a defined order in a specific treaty
 });
