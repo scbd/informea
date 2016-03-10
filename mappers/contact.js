@@ -91,40 +91,40 @@ class ContactMapper {
                 }
             }
             if(_.contains(document.ctgList_ss, 'CPB-FP1')){
-                treaties.push('cpb');
+                treaties.push('cartagena');
                 cpbRoles.push('Cartagena Protocol Primary NFP');
                 cpbOrder=1;
             }
             if(_.contains(document.ctgList_ss, 'CPB-FP2')){
                 cpbRoles.push('Cartagena Protocol Secondary NFP');
                 if (cpbOrder== null){
-                    treaties.push('cpb');
+                    treaties.push('cartagena');
                     cpbOrder=2;
                 }
             }
             if(_.contains(document.ctgList_ss, 'BCH-FP')){
                 cpbRoles.push('BCH NFP');
                 if (cpbOrder== null){
-                    treaties.push('cpb');
+                    treaties.push('cartagena');
                     cpbOrder=2;
                 }
             }
             if(_.contains(document.ctgList_ss, 'ABS-FP')){
-                treaties.push('abs');
+                treaties.push('nagoya');
                 absRoles.push('Nagoya Protocol Primary NFP');
                 absOrder=1;
             }
             if(_.contains(document.ctgList_ss, 'ABS-FP2')){
                 absRoles.push('Nagoya Protocol Secondary NFP');
                 if (absOrder== null){
-                    treaties.push('abs');
+                    treaties.push('nagoya');
                     absOrder=2;
                 }
             }
             if(_.contains(document.ctgList_ss, 'ABSCH-IAC')){
                 absRoles.push('ABSCH Informal Advisory Committee Member');
                 if (absOrder== null){
-                    treaties.push('abs');
+                    treaties.push('nagoya');
                     absOrder=2;
                 }
             }
