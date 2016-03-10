@@ -45,6 +45,12 @@ $data.Entity.extend('Treaty', {
     url:                    { type: String,             required: false },  // URL to the membership page on the MEA website
 });
 
+$data.Entity.extend('Roles', {
+    treaty:                 { type: String,             required: false },  // cbd//catagena//nagoya
+    roles:                  { type: Array, elementType: String ,             required: false },  // focal point roles of the same person for a specific treaty
+    order:                  { type: String,             required: false },  // use to list the focal points in a defined order in a specific treaty
+});
+
 // COLLECTIONS
 
 $data.Entity.extend('Decision', {
@@ -110,6 +116,7 @@ $data.Entity.extend('Contact', {
     phoneNumber:            { type: String,                                 required: false },   // Phone number
     fax:                    { type: String,                                 required: false },   // Fax number
     primary:                { type: $data.Int16,                            required: false },   // Possible values 1 or 0. If 1 this contact is primary national focal point.
+    roles:                  { type: Array, elementType: Roles,               required: false },   // List of PersonRole complex type. Person’s role related to a treaty. Background : Same person can have multiple roles for different treaties on a treaty (ie. CBD Focal point, Nagoya protocol body etc.)
     updated:                { type: Date,                                   required: false }    // This record will be used by the synchronization process, to retrieve only the newest records from the database. It is not mandatory, but if not provided, the service will always harvest all records. If this information is not available, always return the current date
 });
     
