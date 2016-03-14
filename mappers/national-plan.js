@@ -24,7 +24,7 @@ class NationalPlanMapper {
 			url: document.url_ss[0],
             files: JSON.parse(document.documentLinks_s||'[]').map(link => new File({
                 filename: link.url.substr(link.url.lastIndexOf("/")+1),
-                url: link.url,
+                url: link.url.charAt(0)=='/'? 'https://chm.cbd.int' + link.url:link.url,
                 language: 'en'
             })),
 			submission: document.createdDate_dt,
