@@ -1,4 +1,5 @@
 var superagent = require('superagent-promise')(require('superagent'), Promise);
+var _ = require('underscore');
 
 class MeetingMapper {
 
@@ -8,7 +9,7 @@ class MeetingMapper {
     //============================================================
     async query () {
 
-    	var url = 'https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,title_AR_t,title_ES_t,title_FR_t,title_RU_t,title_ZH_t,symbol_s,eventCountry_s,startDate_dt,updatedDate_dt,url_ss&q=NOT+version_s:*+AND+realm_ss:chm+AND+schema_s:meeting&rows=9999&start=0&wt=json';
+    	var url = 'https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,title_AR_t,title_ES_t,title_FR_t,title_RU_t,title_ZH_t,themes_ss,symbol_s,eventCountry_s,startDate_dt,updatedDate_dt,url_ss&q=NOT+version_s:*+AND+realm_ss:chm+AND+schema_s:meeting&rows=9999&start=0&wt=json';
 
     	var res = await superagent.get(url).end();
 
@@ -16,7 +17,7 @@ class MeetingMapper {
 
             protocolVersion:        1,
             id:                     document.id,
-            treaty:                 'cbd',
+            treaty:                 _.contains(document.themes_ss, 'CBD-SUBJECT-ABS')?'nagoya': _.contains(document.themes_ss, 'CBD-SUBJECT-CPB')?'cartagena':'cbd',
             url:                    document.url_ss.length ? document.url_ss[0] : null,
             title:                  [ { language: 'en', value: document.title_t },{ language: 'ar', value: document.title_AR_t},{ language: 'es', value: document.title_ES_t},{ language: 'fr', value: document.title_FR_t},{ language: 'ru', value: document.title_RU_t},{ language: 'zh', value: document.title_ZH_t} ],
         //  description:            { type: Array, elementType: LocalizableString,  required: false },   // Short description of the meeting. This is a list of Localizable String complex type objects.
