@@ -134,7 +134,7 @@ $data.Entity.extend('CountryReport', {
 
 $data.Entity.extend('CountryProfile', {
     protocolVersion:        { type: $data.Int16,                            required: true  },  //
-    country:                { type: String,                                 required: true  },  // Country code. ISO 31661  3letter code for the country (http://en.wikipedia.org/wiki/ISO_3166 1_alpha3) or ISO 31661  2letter country code (http://en.wikipedia.org/wiki/ISO_3166 1_alpha2)
+    country:                { type: String, key: true,                      required: true  },  // Country code. ISO 31661  3letter code for the country (http://en.wikipedia.org/wiki/ISO_3166 1_alpha3) or ISO 31661  2letter country code (http://en.wikipedia.org/wiki/ISO_3166 1_alpha2)
     treaty:                 { type: String,                                 required: true  },  // This is the information source, not the subject of signature or ratification. Use one of the predefined values from the Treaty enumeration.
     entryIntoForce:         { type: Date,                                   required: true  },  // Date when the treaty/convention entered into force within this country.
     updated:                { type: Date,                                   required: false },  // This record will be used by the synchronization process, to retrieve only the newest records from the database. It is not mandatory, but if not provided, the service will always harvest all records. If this information is not available, always return the current date
