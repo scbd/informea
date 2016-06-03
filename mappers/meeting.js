@@ -19,7 +19,7 @@ class MeetingMapper {
             id:                     document.id,
             treaty:                 _.contains(document.themes_ss, 'CBD-SUBJECT-ABS')?'nagoya': _.contains(document.themes_ss, 'CBD-SUBJECT-CPB')?'cartagena':'cbd',
             url:                    document.url_ss.length ? document.url_ss[0] : null,
-            title:                  [ { language: 'en', value: document.title_t },{ language: 'ar', value: document.title_AR_t},{ language: 'es', value: document.title_ES_t},{ language: 'fr', value: document.title_FR_t},{ language: 'ru', value: document.title_RU_t},{ language: 'zh', value: document.title_ZH_t} ],
+            title:                  toLocalizableString(document, 'title'),
         //  description:            { type: Array, elementType: LocalizableString,  required: false },   // Short description of the meeting. This is a list of Localizable String complex type objects.
             start:                  document.startDate_dt,
         //  end:                    { type: Date,                                   required: false },   // End date for the meeting
@@ -39,6 +39,19 @@ class MeetingMapper {
 
         }));
     }
+}
+
+function toLocalizableString(document, field) {
+
+    var texts = [{ language: 'en', value: document[field+'_t'] }];
+
+    if(document[field+'_AR_t'] && document[field+'_AR_t']!=document[field+'_t']) texts.push({ language: 'ar', value: document[field+'_AR_t'] });
+    if(document[field+'_ES_t'] && document[field+'_ES_t']!=document[field+'_t']) texts.push({ language: 'es', value: document[field+'_ES_t'] });
+    if(document[field+'_FR_t'] && document[field+'_FR_t']!=document[field+'_t']) texts.push({ language: 'fr', value: document[field+'_FR_t'] });
+    if(document[field+'_RU_t'] && document[field+'_RU_t']!=document[field+'_t']) texts.push({ language: 'ru', value: document[field+'_RU_t'] });
+    if(document[field+'_ZH_t'] && document[field+'_ZH_t']!=document[field+'_t']) texts.push({ language: 'zh', value: document[field+'_ZH_t'] });
+
+    return texts;
 }
 
 export default new MeetingMapper();
