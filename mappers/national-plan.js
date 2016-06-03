@@ -1,6 +1,7 @@
 
 "use strict";
 var superagent = require('superagent-promise')(require('superagent'), Promise);
+var mime = require('mime-types');
 
 class NationalPlanMapper {
 
@@ -25,6 +26,7 @@ class NationalPlanMapper {
             files: JSON.parse(document.documentLinks_s||'[]').map(link => new File({
                 filename: link.url.substr(link.url.lastIndexOf("/")+1),
                 url: link.url.charAt(0)=='/'? 'https://chm.cbd.int' + link.url:link.url,
+                mimeType : link.url ? (mime.lookup(link.url) || 'application/octet-stream') : null,
                 language: ((link.url||'').match(/-([a-z]{2,3})\.\w+($|\?)/)||[])[1]
             })),
 			submission: document.createdDate_dt,

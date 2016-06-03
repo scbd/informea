@@ -1,4 +1,5 @@
 var superagent = require('superagent-promise')(require('superagent'), Promise);
+var mime = require('mime-types');
 
 class DecisionMapper {
 
@@ -25,6 +26,9 @@ class DecisionMapper {
                 files.push({filename: document.file_ru_s.substr(document.file_ru_s.lastIndexOf("/")+1), url: document.file_ru_s, language: 'ru'});
             if(document.file_zh_s)
                 files.push({filename: document.file_zh_s.substr(document.file_zh_s.lastIndexOf("/")+1), url: document.file_zh_s, language: 'zh'});
+
+            files.forEach(f => f.mimeType = (mime.lookup(f.filename) || 'application/octet-stream'));
+
             return new Decision({
 
                 protocolVersion:        1,

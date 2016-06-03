@@ -1,4 +1,5 @@
 var superagent = require('superagent-promise')(require('superagent'), Promise);
+var mime = require('mime-types');
 
 class CountryReportMapper {
 
@@ -21,6 +22,7 @@ class CountryReportMapper {
             url:                document.url_ss[0],
             files:              JSON.parse(document.documentLinks_s||'[]').map(link => new File({
                 filename: link.url.substr(link.url.lastIndexOf("/")+1),
+                mimeType : mime.lookup(link.url.substr(link.url.lastIndexOf("/")+1)) || 'application/octet-stream',
                 url: link.url,
                 language: ((link.url||'').match(/-([a-z]{2,3})\.\w+($|\?)/)||[])[1]
             })),
