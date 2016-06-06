@@ -1,13 +1,13 @@
-FROM node:0.12
+FROM node:4
 
 WORKDIR /usr/src/app
 
 COPY package.json ./
 
-RUN npm install
+RUN npm install -q
 
 COPY . ./
 
 EXPOSE 8000
 
-CMD [ "npm", "start" ]
+CMD [ "node", "bootstrap" ]

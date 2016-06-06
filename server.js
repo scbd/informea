@@ -1,3 +1,5 @@
+process.on('SIGTERM', ()=>process.exit());
+
 require('odata-server');
 require('./custom/customCompiler');
 require('./custom/customConverter');
