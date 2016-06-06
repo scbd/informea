@@ -9,7 +9,7 @@ class MeetingMapper {
     //============================================================
     async query () {
 
-    	var url = 'https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,title_AR_t,title_ES_t,title_FR_t,title_RU_t,title_ZH_t,themes_ss,symbol_s,eventCountry_s,startDate_dt,updatedDate_dt,url_ss&q=NOT+version_s:*+AND+realm_ss:chm+AND+schema_s:meeting&rows=9999&start=0&wt=json';
+    	var url = 'https://chm.cbd.int/api/v2013/index/select?fl=id,title_*,themes_ss,symbol_s,eventCountry_s,eventCity_t,eventVenue_t,startDate_dt,endDate_dt,updatedDate_dt,url_ss&q=NOT+version_s:*+AND+realm_ss:chm+AND+schema_s:meeting&rows=9999&start=0&wt=json';
 
     	var res = await superagent.get(url).end();
 
@@ -22,7 +22,7 @@ class MeetingMapper {
             title:                  toLocalizableString(document, 'title'),
         //  description:            { type: Array, elementType: LocalizableString,  required: false },   // Short description of the meeting. This is a list of Localizable String complex type objects.
             start:                  document.startDate_dt,
-        //  end:                    { type: Date,                                   required: false },   // End date for the meeting
+            end:                    document.endDate_dt,
         //  repetition:             { type: String,                                 required: false },   // Frequency of this meeting. Use one of the predefined values from MeetingRepetition enumeration
         //  kind:                   { type: String,                                 required: false },   // Kind of meeting (official, partner, interest etc.). Use one of the predefined values from MeetingKind enumeration
             type:                   document.symbol_s.match(/^COP-\d+$/)?'COP': (document.symbol_s==='EXCOP-01')?'COP': '', //{ type: String,                                 required: false },   // Type of meeting. Use one of the predefined values from MeetingType enumeration
@@ -30,8 +30,8 @@ class MeetingMapper {
         //  status:                 { type: String,                                 required: false },   // Status of the event. Use one of the predefined values from MeetingStatus enumeration
         //  imageUrl:               { type: String,                                 required: false },   // URL of a small, representative image for the meeting, displayed by InforMEA to display a listing of the meetings.
         //  imageCopyright:         { type: String,                                 required: false },   // Copyright statement of the above image
-        //  location:               { type: String,                                 required: false },   // Location of the event (ex. Nottingham Castle, grand ball room)
-        //   city:                   document.eventCity_t,
+            location:               document.eventVenue_t,
+            city:                   document.eventCity_t,
             country:                (document.eventCountry_s||'').toUpperCase(),
         //  latitude:               { type: Number,                                 required: false },   // Latitude of the event place in decimal degrees (ex. 23.456323). This value may be used to represent the event on a map using existing geographical applications such as Google Maps
         //  longitude:              { type: Number,                                 required: false },   // Longitude of the event place in decimal degrees (ex. 23.456323). This value may be used to represent the event on a map using existing geographical applications such as Google Maps
