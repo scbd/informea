@@ -17,7 +17,7 @@ class MeetingMapper {
 
             protocolVersion:        1,
             id:                     document.id,
-            treaty:                 _.contains(document.themes_ss, 'CBD-SUBJECT-ABS') && (Date.parse(document.startDate_dt) > Date.parse('2014-10-12'))?'nagoya': _.contains(document.themes_ss, 'CBD-SUBJECT-CPB') && (Date.parse(document.startDate_dt) > Date.parse('2003-09-11'))?'cartagena':'cbd',
+            treaty:                 _.contains(document.themes_ss, 'CBD-SUBJECT-ABS')?'nagoya': _.contains(document.themes_ss, 'CBD-SUBJECT-CPB')?'cartagena':'cbd',
             url:                    document.url_ss.length ? document.url_ss[0] : null,
             title:                  toLocalizableString(document, 'title'),
         //  description:            { type: Array, elementType: LocalizableString,  required: false },   // Short description of the meeting. This is a list of Localizable String complex type objects.
