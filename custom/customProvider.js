@@ -171,8 +171,12 @@ $C('$data.storageProviders.Custom.CustomProvider', $data.StorageProviderBase, nu
                 result = [result.length];
 
             query.rawDataList = result;
+          
+            if(result.length > 0)
+                callBack.success(query);
+            else
+                callBack.error({'message':'No record found', 'status': 404});
             
-            callBack.success(query);
             
         }).catch(error => callBack.error(error));         
     },
