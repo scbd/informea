@@ -3,12 +3,12 @@
   "description": "SCBD InforMEA Service",
   "dependencies": {
     "babel": "5.8.23",
-    "express": "4.13.3",
-    "mime-types": "2.1.11",
+    "express": "4.16.2",
+    "mime-types": "2.1.17",
     "odata-server": "1.3.7",
     "superagent": "3.6.3",
     "underscore": "1.8.3",
-    "when": "3.7.3"
+    "when": "3.7.8"
   },
   "engine": "node >= 4.8.1",
   "license": "MIT",
