@@ -1,4 +1,4 @@
-var superagent = require('superagent-promise')(require('superagent'), Promise);
+var superagent = require('superagent');
 var mime = require('mime-types');
 
 class CountryReportMapper {
@@ -9,7 +9,7 @@ class CountryReportMapper {
     //============================================================
     async query () {
 
-    	var res = await superagent.get("https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,government_s,createdDate_dt,updatedDate_dt,url_ss,reportType_s,documentLinks_s&q=NOT+version_s:*+AND+realm_ss:chm+AND+schema_s:*+AND+(+schema_s:nationalReport+)+AND+(*:*+NOT+reportType_s:B0EBAE91-9581-4BB2-9C02-52FCF9D82721+)&rows=9999&start=0&wt=json").end();
+    	var res = await superagent.get("https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,government_s,createdDate_dt,updatedDate_dt,url_ss,reportType_s,documentLinks_s&q=NOT+version_s:*+AND+realm_ss:chm+AND+schema_s:*+AND+(+schema_s:nationalReport+)+AND+(*:*+NOT+reportType_s:B0EBAE91-9581-4BB2-9C02-52FCF9D82721+)&rows=9999&start=0&wt=json");
 
         return res.body.response.docs.map(document => new CountryReport({
 

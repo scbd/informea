@@ -1,4 +1,4 @@
-var superagent = require('superagent-promise')(require('superagent'), Promise);
+var superagent = require('superagent');
 var mime = require('mime-types');
 
 class DecisionMapper {
@@ -9,7 +9,7 @@ class DecisionMapper {
     //============================================================
     async query () {
 
-    	var res = await superagent.get('https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,title_AR_t,title_ES_t,title_FR_t,title_RU_t,title_ZH_t,file_en_s, file_es_s, file_fr_s, file_ar_s,file_ru_s,file_zh_s,code_s,eventId_s,eventTitle_s,treaty_s,createdDate_dt,updatedDate_dt,position_i&q=realm_ss:chm+AND+schema_s:decision&rows=9999&sort=createdDate_dt+desc,+title_t+asc&start=0&wt=json').end();
+    	var res = await superagent.get('https://chm.cbd.int/api/v2013/index/select?fl=id,title_t,title_AR_t,title_ES_t,title_FR_t,title_RU_t,title_ZH_t,file_en_s, file_es_s, file_fr_s, file_ar_s,file_ru_s,file_zh_s,code_s,eventId_s,eventTitle_s,treaty_s,createdDate_dt,updatedDate_dt,position_i&q=realm_ss:chm+AND+schema_s:decision&rows=9999&sort=createdDate_dt+desc,+title_t+asc&start=0&wt=json');
 
         return res.body.response.docs.map(document => {
             var files = [];
