@@ -1,4 +1,4 @@
-FROM node:4
+FROM node:4-alpine
 
 WORKDIR /usr/src/app
 
@@ -10,4 +10,4 @@ COPY . ./
 
 EXPOSE 8000
 
-CMD [ "node", "bootstrap" ]
+CMD [ "node", "bootstrap", "--recycle" ]

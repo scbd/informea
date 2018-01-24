@@ -55,3 +55,21 @@ process.on('uncaughtException', (error/*, p*/) => {
 // NO EXPORTS - MAIN FILE
 
 console.log('X OData server listening on http://0.0.0.0:8000/informea.svc');
+
+if(process.argv.includes('--recycle'))
+    initRecycle();
+
+function initRecycle() {
+
+    const HOUR = 1000*60*60;
+
+    var recyclingTime = 4*HOUR + (Math.random() * 4*HOUR) | 0;
+
+    console.log(`Application will recycle in ${ Math.round(recyclingTime*10/HOUR)/10 } hour(s)`);
+
+    setTimeout(()=>{
+        console.log(`Recycling app (with exit code: -10)...`);
+        process.exit(-10);
+    }, recyclingTime);
+
+}
