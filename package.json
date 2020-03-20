@@ -15,6 +15,6 @@
   "private": true,
   "repository": "scbd/informea",
   "scripts": {
-      "start": "node bootstrap.js"
+    "start": "node bootstrap.js"
   }
 }
