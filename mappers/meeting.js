@@ -9,7 +9,7 @@ class MeetingMapper {
     //============================================================
     async query () {
 
-    	var url = 'https://chm.cbd.int/api/v2013/index/select?fl=id,title_*,themes_ss,symbol_s,eventCountry_s,eventCity_t,eventVenue_t,startDate_dt,endDate_dt,updatedDate_dt,url_ss&q=NOT+version_s:*+AND+realm_ss:chm+AND+schema_s:meeting&rows=9999&start=0&wt=json';
+    	var url = 'https://chm.cbd.int/api/v2013/index/select?fl=id,title_*,themes_ss,symbol_s,eventCountry_s,eventCity_t,eventVenue_t,startDate_dt,endDate_dt,updatedDate_dt,url_ss&q=NOT+version_s:*+AND+realm_ss:chm+AND+schema_s:meeting&rows=9999&start=0&wt=json&sort=updatedDate_dt+desc';
 
     	var res = await superagent.get(url);
 
