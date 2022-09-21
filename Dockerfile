@@ -1,4 +1,4 @@
-FROM node:4-alpine
+FROM node:14-alpine
 
 RUN apk update  -q && \
     apk upgrade -q && \
