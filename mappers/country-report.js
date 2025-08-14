@@ -11,8 +11,9 @@ class CountryReportMapper {
 
         const url = new URL("https://chm.cbd.int/api/v2013/index/select");
         url.searchParams.set('fl', 'id,title_t,government_s,createdDate_dt,updatedDate_dt,url_ss,reportType_s,documentLinks_s');
-        url.searchParams.set('q', 'NOT version_s:* AND ((realm_ss:chm AND schema_s:(nbsap nationalReport6)) OR (realm_ss:ort AND schema_s:nbsap))');
+        url.searchParams.set('q', 'NOT version_s:* AND ((realm_ss:chm AND schema_s:(nationalReport nationalReport6)) OR (realm_ss:ort AND schema_s:nationalReport7))');
         url.searchParams.set('rows', '9999');
+        url.searchParams.set('sort', 'updatedDate_dt desc');
         url.searchParams.set('start', '0');
         url.searchParams.set('wt', 'json');     
     	var res = await superagent.get(url.toString())
