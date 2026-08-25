@@ -72,7 +72,6 @@ jobs:
           tags: ci-build:local
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          push: ${{ steps.meta.outputs.push }}
 
       - name: Test image
         run: |
