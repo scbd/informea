@@ -35,7 +35,7 @@ class CountryReportMapper {
                 url: link.url,
                 language: ((link.url||'').match(/-([a-z]{2,3})\.\w+($|\?)/)||[])[1]
             })),
-            updated:            document.updatedOn_dt
+			updated: document.updatedDate_dt
         }));
     }
 }
