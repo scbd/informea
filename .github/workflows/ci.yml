@@ -24,10 +24,11 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      # Determine tags + whether to push
       - name: Resolve image tags
         id: meta
         run: |
-          SHORT_SHA=${GITHUB_SHA::7}
+          SHORT_SHA="${GITHUB_SHA::7}"
           IMAGE="${IMAGE_NAME}"
           REF="${GITHUB_REF}"
           if [[ "${REF}" =~ ^refs/tags/[0-9]{4}\.[0-9]+(\.[0-9]+)*$ ]]; then
@@ -64,6 +65,7 @@ jobs:
         with:
           build-args: |
             VERSION=${{ github.sha }}
+            COMMIT=${{ github.sha }}
             BRANCH=${{ steps.meta.outputs.branch }}
             TAG=${{ steps.meta.outputs.build_tag }}
           load: true
@@ -98,6 +100,7 @@ jobs:
             docker push "$tag"
           done <<< "${{ steps.meta.outputs.tags }}"
 
+      # Portainer deploy (non-blocking)
       - name: Deploy to Portainer (dev)
         if: steps.meta.outputs.branch == 'dev'
         continue-on-error: true
